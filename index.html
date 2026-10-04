@@ -141,7 +141,6 @@
     --h: 61cqh;                       /* horizon: where the garden starts */
     width: 168cqw; height: auto; max-width: none; left: calc(50cqw - 168cqw * .5375);
     top: calc(var(--h) - 168cqw * 684 / 1600);
-    filter: saturate(.78) brightness(1.07) contrast(.9);
     animation: drift 30s ease-in-out infinite alternate;
   }
   @keyframes drift { to { transform: scale(1.035) translateY(-.6cqh); } }
@@ -236,7 +235,7 @@
     content: ""; position: absolute; left: 50%; top: 150px; width: 170%; aspect-ratio: 1600 / 684;
     transform: translateX(-53.75%);
     background: url("assets/mosque.webp") center / contain no-repeat;
-    opacity: .13; pointer-events: none;
+    opacity: .22; pointer-events: none;
     -webkit-mask-image: linear-gradient(#000 40%, transparent 95%); mask-image: linear-gradient(#000 40%, transparent 95%);
   }
   .card > * { position: relative; z-index: 2; }
