@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alanoud &amp; Abdulaziz</title>
+<meta name="description" content="Together with their families, Alanoud &amp; Abdulaziz cordially invite you to celebrate their wedding — Sunday, 10 November 2024, Bingham Riverhouse, London.">
+<meta property="og:title" content="Alanoud &amp; Abdulaziz — Wedding Invitation">
+<meta property="og:description" content="Sunday, 10 November 2024 · 5:00 PM · Bingham Riverhouse, London">
+<meta property="og:image" content="assets/poster.jpg">
+<meta name="theme-color" content="#f6f3ea">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #f6f3ea;
+    --paper: #fbf9f3;
+    --sage: #7d8659;
+    --sage-deep: #5f6842;
+    --sage-soft: #c9cfb3;
+    --sky: #dbe7ee;
+    --ink: #4a4f3a;
+    --gold: #b8a37a;
+    --seal: #8a9562;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  [hidden] { display: none !important; }
+  body {
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body.locked { overflow: hidden; }
+
+  /* soft watercolor wash behind everything */
+  .wash {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(60vmax 40vmax at 10% 0%, rgba(219,231,238,.9), transparent 60%),
+      radial-gradient(50vmax 40vmax at 100% 20%, rgba(214,226,190,.55), transparent 60%),
+      radial-gradient(60vmax 50vmax at 50% 110%, rgba(201,207,179,.6), transparent 60%),
+      var(--ivory);
+  }
+
+  /* ---------- Envelope / opening screen ---------- */
+  .opening {
+    position: fixed; inset: 0; z-index: 30;
+    display: grid; place-items: center;
+    background: inherit;
+    transition: opacity 1s ease, visibility 1s ease;
+  }
+  .opening.gone { opacity: 0; visibility: hidden; }
+  .opening-inner { text-align: center; padding: 24px 16px; }
+  .eyebrow {
+    letter-spacing: .32em; text-transform: uppercase;
+    font-size: 13px; color: var(--sage); font-weight: 600;
+  }
+  .envelope {
+    position: relative; width: min(78vw, 340px); aspect-ratio: 1.45;
+    margin: 28px auto 30px; cursor: pointer;
+    perspective: 1200px;
+    filter: drop-shadow(0 18px 30px rgba(95,104,66,.18));
+    -webkit-tap-highlight-color: transparent;
+  }
+  .env-back, .env-front, .env-flap { position: absolute; inset: 0; }
+  .env-back { background: #ece6d6; border-radius: 6px; }
+  .env-front {
+    z-index: 3; border-radius: 0 0 6px 6px;
+    background: linear-gradient(160deg, #f5f0e3, #ebe4d2);
+    clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%);
+  }
+  .env-card {
+    position: absolute; left: 7%; right: 7%; top: 8%; bottom: 6%;
+    background: var(--paper); border-radius: 4px; z-index: 2;
+    border: 1px solid var(--sage-soft);
+    display: grid; place-items: start center; padding-top: 10%;
+    transition: transform 1s cubic-bezier(.2,.8,.2,1) .55s;
+  }
+  .env-card span { font-family: "Pinyon Script", cursive; font-size: 30px; color: var(--sage); }
+  .env-flap {
+    z-index: 4; height: 62%;
+    background: linear-gradient(#e9e2cf, #f1ecdf);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    transition: transform .8s cubic-bezier(.4,0,.2,1);
+    border-radius: 6px 6px 0 0;
+  }
+  .seal {
+    position: absolute; z-index: 5; left: 50%; top: 62%;
+    width: 74px; height: 74px; transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #a3ad7c, var(--seal) 55%, #6d774b);
+    box-shadow: inset 0 0 0 5px rgba(255,255,255,.12), inset 0 -6px 10px rgba(0,0,0,.15), 0 4px 10px rgba(0,0,0,.18);
+    display: grid; place-items: center;
+    color: #f3f1e4; font-family: "Amiri", serif; font-size: 38px; line-height: 1;
+    transition: opacity .4s ease, transform .5s ease;
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  .seal span { transform: translateY(-3px); }
+  @keyframes pulse {
+    0%, 100% { box-shadow: inset 0 0 0 5px rgba(255,255,255,.12), inset 0 -6px 10px rgba(0,0,0,.15), 0 4px 10px rgba(0,0,0,.18), 0 0 0 0 rgba(125,134,89,.35); }
+    50% { box-shadow: inset 0 0 0 5px rgba(255,255,255,.12), inset 0 -6px 10px rgba(0,0,0,.15), 0 4px 10px rgba(0,0,0,.18), 0 0 0 14px rgba(125,134,89,0); }
+  }
+  .envelope.open .seal { opacity: 0; transform: translate(-50%, -50%) scale(.6); animation: none; }
+  .envelope.open .env-flap { transform: rotateX(180deg); z-index: 1; }
+  .envelope.open .env-card { transform: translateY(-42%); }
+
+  .names-script {
+    font-family: "Pinyon Script", cursive; color: var(--sage-deep);
+    font-size: clamp(40px, 10vw, 60px); line-height: 1.1;
+  }
+  .tap {
+    margin-top: 14px; font-size: 15px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--sage); background: none; border: 0; cursor: pointer; font-family: inherit;
+    padding: 10px 18px;
+  }
+  .tap:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- Video stage ---------- */
+  .stage {
+    min-height: 100svh; display: grid; place-items: center; padding: 3vh 16px;
+    position: relative;
+  }
+  .frame {
+    position: relative;
+    height: min(94svh, calc((100vw - 32px) * 16 / 9));
+    aspect-ratio: 9 / 16;
+    border-radius: 18px; overflow: hidden;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -20px rgba(74,79,58,.35), 0 0 0 1px rgba(125,134,89,.15);
+  }
+  .frame video { width: 100%; height: 100%; object-fit: cover; display: block; background: var(--paper); }
+  .controls {
+    position: absolute; right: 12px; bottom: 12px; display: flex; gap: 8px; z-index: 2;
+  }
+  .icon-btn {
+    width: 40px; height: 40px; border-radius: 50%; border: 0; cursor: pointer;
+    background: rgba(251,249,243,.82); color: var(--sage-deep);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    display: grid; place-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .scroll-hint {
+    position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
+    color: var(--sage); font-size: 13px; letter-spacing: .25em; text-transform: uppercase;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    opacity: 0; transition: opacity .8s; text-decoration: none;
+  }
+  .scroll-hint.show { opacity: 1; }
+  .scroll-hint svg { width: 18px; animation: bob 1.8s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(5px); } }
+
+  /* On phones the video fills the screen */
+  @media (max-width: 560px) {
+    .stage { padding: 0; }
+    .frame { height: 100svh; width: 100vw; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
+    .scroll-hint { bottom: 70px; background: rgba(251,249,243,.75); padding: 6px 12px; border-radius: 20px; }
+  }
+
+  /* ---------- Details ---------- */
+  .details {
+    max-width: 620px; margin: 0 auto; padding: 72px 16px 96px; text-align: center;
+  }
+  .card {
+    background: rgba(251,249,243,.85);
+    border: 1px solid rgba(125,134,89,.25);
+    border-radius: 14px; padding: 48px 22px;
+    position: relative;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 8px; border: 1px solid rgba(125,134,89,.18); border-radius: 10px; pointer-events: none;
+  }
+  .monogram {
+    width: 92px; height: 92px; margin: 0 auto 22px; border-radius: 50%;
+    border: 1px solid var(--sage-soft); display: grid; place-items: center;
+    font-family: "Amiri", serif; font-size: 52px; color: var(--sage); line-height: 1;
+  }
+  .monogram span { transform: translateY(-4px); }
+  .together { font-family: "Pinyon Script", cursive; font-size: 28px; color: var(--sage); }
+  .arabic { font-family: "Amiri", serif; font-size: 34px; color: var(--sage-deep); margin: 14px 0 2px; direction: rtl; }
+  .divider { display: flex; align-items: center; gap: 12px; justify-content: center; margin: 26px auto; color: var(--gold); }
+  .divider::before, .divider::after { content: ""; height: 1px; width: 70px; background: currentColor; opacity: .6; }
+  .lead { letter-spacing: .2em; text-transform: uppercase; font-weight: 600; font-size: 15px; color: var(--sage-deep); line-height: 1.9; }
+  .when {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    margin: 30px auto 0; max-width: 380px;
+    letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: var(--sage-deep);
+  }
+  .when .mid { border-left: 1px solid var(--sage-soft); border-right: 1px solid var(--sage-soft); padding: 4px 22px; line-height: 1.35; font-size: 15px; }
+  .when .big { display: block; font-size: 30px; letter-spacing: .05em; text-transform: none; font-family: "Cormorant Garamond", serif; font-weight: 500; }
+  .where { margin-top: 28px; letter-spacing: .18em; text-transform: uppercase; font-size: 15px; line-height: 1.8; }
+  .where small { display: block; letter-spacing: .06em; text-transform: none; font-size: 16px; font-style: italic; color: #6f7458; }
+
+  .countdown { display: flex; justify-content: center; gap: 10px; margin-top: 34px; flex-wrap: wrap; }
+  .countdown div { min-width: 66px; padding: 10px 6px; border-radius: 10px; background: rgba(201,207,179,.28); }
+  .countdown b { display: block; font-size: 28px; font-weight: 500; color: var(--sage-deep); }
+  .countdown span { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--sage); }
+  .after-note { margin-top: 30px; font-style: italic; font-size: 19px; color: var(--sage); }
+
+  .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+    font-family: inherit; font-size: 14px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600;
+    padding: 12px 20px; border-radius: 999px; border: 1px solid var(--sage); color: var(--sage-deep); background: transparent;
+    transition: background .25s, color .25s;
+  }
+  .btn:hover { background: var(--sage); color: var(--paper); }
+  .btn.solid { background: var(--sage); color: var(--paper); }
+  .btn.solid:hover { background: var(--sage-deep); }
+  .btn svg { width: 16px; height: 16px; }
+
+  @media (max-width: 420px) { .lead { letter-spacing: .12em; font-size: 14px; } .when { letter-spacing: .1em; } .when .mid { padding: 4px 14px; } }
+  .rsvp { margin-top: 40px; font-family: "Pinyon Script", cursive; font-size: 30px; color: var(--sage); line-height: 1.3; }
+
+  footer { text-align: center; padding: 0 16px 40px; font-size: 14px; color: #8b8f75; letter-spacing: .1em; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body class="locked">
+  <div class="wash" aria-hidden="true"></div>
+
+  <!-- Opening envelope -->
+  <section class="opening" id="opening" aria-label="Open invitation">
+    <div class="opening-inner">
+      <p class="eyebrow">You are invited</p>
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the invitation">
+        <div class="env-back"></div>
+        <div class="env-card"><span>A &amp; A</span></div>
+        <div class="env-front"></div>
+        <div class="env-flap"></div>
+        <div class="seal" aria-hidden="true"><span>ع</span></div>
+      </div>
+      <h1 class="names-script">Alanoud &amp; Abdulaziz</h1>
+      <button class="tap" id="tapBtn">Tap to open</button>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="stage" id="stage">
+    <div class="frame">
+      <video id="film" src="assets/invitation.mp4" poster="assets/poster.jpg" playsinline webkit-playsinline preload="auto"></video>
+      <div class="controls">
+        <button class="icon-btn" id="muteBtn" aria-label="Mute">
+          <svg id="icoSound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          <svg id="icoMute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+        </button>
+        <button class="icon-btn" id="replayBtn" aria-label="Replay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+      </div>
+    </div>
+    <a class="scroll-hint" id="scrollHint" href="#details">
+      Details
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- Details -->
+  <main class="details" id="details">
+    <article class="card reveal">
+      <div class="monogram" aria-hidden="true"><span>ع</span></div>
+      <p class="together">Together With Their Families</p>
+      <p class="arabic" lang="ar">العنود و عبدالعزيز</p>
+      <h2 class="names-script">Alanoud &amp; Abdulaziz</h2>
+
+      <div class="divider" aria-hidden="true">✦</div>
+
+      <p class="lead">Cordially invite you to celebrate<br>their wedding</p>
+
+      <div class="when">
+        <div>Sunday</div>
+        <div class="mid">November<span class="big">10th</span>2024</div>
+        <div>5:00 PM</div>
+      </div>
+
+      <p class="where">London<br>Bingham Riverhouse
+        <small>61–63 Petersham Road, Richmond TW10 6UT</small>
+      </p>
+
+      <div class="countdown" id="countdown" aria-live="polite"></div>
+
+      <div class="actions">
+        <a class="btn solid" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bingham+Riverhouse+61-63+Petersham+Road+Richmond+TW10+6UT">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          Directions
+        </a>
+        <button class="btn" id="calBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+          Add to calendar
+        </button>
+      </div>
+
+      <p class="rsvp">Kindly Reply<br>By October 30th 2024</p>
+    </article>
+  </main>
+
+  <footer>With love · العنود و عبدالعزيز</footer>
+
+<script>
+(() => {
+  const EVENT = {
+    start: new Date("2024-11-10T17:00:00Z"),   // 5:00 PM London (GMT in November)
+    end:   new Date("2024-11-10T23:00:00Z"),
+    title: "Wedding of Alanoud & Abdulaziz",
+    location: "Bingham Riverhouse, 61-63 Petersham Road, Richmond TW10 6UT, London",
+  };
+
+  const opening = document.getElementById("opening");
+  const envelope = document.getElementById("envelope");
+  const tapBtn = document.getElementById("tapBtn");
+  const film = document.getElementById("film");
+  const hint = document.getElementById("scrollHint");
+  const muteBtn = document.getElementById("muteBtn");
+  const icoSound = document.getElementById("icoSound");
+  const icoMute = document.getElementById("icoMute");
+
+  let opened = false;
+  function openInvite() {
+    if (opened) return;
+    opened = true;
+    envelope.classList.add("open");
+    // Start playback inside the user gesture so sound is allowed
+    film.muted = false;
+    const p = film.play();
+    if (p && p.catch) p.catch(() => { film.muted = true; syncMute(); film.play().catch(() => {}); });
+    film.pause();
+    setTimeout(() => {
+      opening.classList.add("gone");
+      document.body.classList.remove("locked");
+      film.currentTime = 0;
+      film.play().catch(() => { film.muted = true; syncMute(); film.play().catch(() => {}); });
+    }, 1500);
+    setTimeout(() => hint.classList.add("show"), 9000);
+  }
+  envelope.addEventListener("click", openInvite);
+  tapBtn.addEventListener("click", openInvite);
+  envelope.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openInvite(); } });
+
+  function syncMute() {
+    icoSound.hidden = film.muted;
+    icoMute.hidden = !film.muted;
+    muteBtn.setAttribute("aria-label", film.muted ? "Unmute" : "Mute");
+  }
+  muteBtn.addEventListener("click", () => { film.muted = !film.muted; syncMute(); });
+  document.getElementById("replayBtn").addEventListener("click", () => { film.currentTime = 0; film.play(); });
+  film.addEventListener("click", () => film.paused ? film.play() : film.pause());
+  film.addEventListener("ended", () => {
+    hint.classList.add("show");
+    document.getElementById("details").scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Reveal details on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // Countdown
+  const cd = document.getElementById("countdown");
+  function tick() {
+    const diff = EVENT.start - new Date();
+    if (diff <= 0) {
+      cd.outerHTML = '<p class="after-note">Thank you for celebrating with us</p>';
+      return;
+    }
+    const d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24,
+          m = Math.floor(diff / 6e4) % 60, s = Math.floor(diff / 1e3) % 60;
+    cd.innerHTML = [[d, "Days"], [h, "Hours"], [m, "Mins"], [s, "Secs"]]
+      .map(([v, l]) => `<div><b>${String(v).padStart(2, "0")}</b><span>${l}</span></div>`).join("");
+    setTimeout(tick, 1000);
+  }
+  tick();
+
+  // Add to calendar (.ics)
+  const fmt = d => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  document.getElementById("calBtn").addEventListener("click", () => {
+    const ics = [
+      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Invitation//EN", "BEGIN:VEVENT",
+      "UID:alanoud-abdulaziz-20241110@invitation",
+      "DTSTAMP:" + fmt(new Date()),
+      "DTSTART:" + fmt(EVENT.start), "DTEND:" + fmt(EVENT.end),
+      "SUMMARY:" + EVENT.title,
+      "LOCATION:" + EVENT.location.replace(/,/g, "\\,"),
+      "END:VEVENT", "END:VCALENDAR"
+    ].join("\r\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
+    a.download = "alanoud-abdulaziz-wedding.ics";
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+})();
+</script>
+</body>
+</html>
